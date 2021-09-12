@@ -6,17 +6,18 @@ public class Main {
     public static void main(String[] args){
         System.out.print("Введите Строку: ");
         Scanner scanner = new Scanner(System.in);
-        String dataIn = scanner.nextLine();
-        HashMap<String, Integer> dictionary = new HashMap<>();
-        for (int i=0; i < dataIn.length(); i++) {
-            if(dictionary.containsKey(dataIn.charAt(i)+":")){
-                Integer temp = dictionary.get(dataIn.charAt(i)+":");
-                dictionary.put(dataIn.charAt(i)+":",temp+1);
+        String text = scanner.nextLine();
+        text = text.toLowerCase();
+        HashMap<Character, Integer> dictionary = new HashMap<>();
+        for (int i=0; i < text.length(); i++) {
+            if(dictionary.containsKey(text.charAt(i)+":")){
+                Integer temp = dictionary.get(text.charAt(i)+":");
+                dictionary.put(text.charAt(i),temp+1);
             }
-            else{dictionary.put(dataIn.charAt(i)+":",1);
+            else{dictionary.put(text.charAt(i),1);
             }
         }
-        for (Map.Entry<String, Integer> entry : dictionary.entrySet()){
+        for (HashMap.Entry<Character, Integer> entry : dictionary.entrySet()){
             System.out.println(entry.getKey() + entry.getValue());
         }
     }
